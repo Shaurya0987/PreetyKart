@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:preetykart/constants.dart';
 import 'package:preetykart/modals/product.dart';
+import 'package:preetykart/screens/details/components/Cart_Counter.dart';
+import 'package:preetykart/screens/details/components/add_to_cart.dart';
+import 'package:preetykart/screens/details/components/colorAndSize.dart';
+import 'package:preetykart/screens/details/components/counter_with_fav_Button.dart';
+import 'package:preetykart/screens/details/components/description.dart';
 import 'package:preetykart/screens/details/components/project_title_with_image.dart';
 
 class BodyScreen extends StatelessWidget {
@@ -34,6 +40,12 @@ class BodyScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       colorAndWidget(product: product),
+                      SizedBox(height: kDefultPaddin/2,),
+                      Description(product: product),
+                      SizedBox(height: kDefultPaddin,),
+                      CounterWithfavEmoji(),
+                      SizedBox(height: kDefultPaddin*2,),
+                      AddToCart(product: product),
                     ],
                   ),
                 ),
@@ -47,67 +59,3 @@ class BodyScreen extends StatelessWidget {
   }
 }
 
-class colorAndWidget extends StatelessWidget {
-  const colorAndWidget({
-    super.key,
-    required this.product,
-  });
-
-  final Product product;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text("Color"),
-              Row(
-                children: [
-                  ColorDot(color: Color(0xFF356C95),isSelected: true,),
-                  ColorDot(color: Color(0xFFF9C078)),
-                  ColorDot(color: Color(0xFFA29B9B)),
-                ],
-              ),
-            ],
-          ),
-        ),
-        Expanded(
-          child: RichText(text: TextSpan(
-            style: TextStyle(color: kTextColor),
-            children: [
-              TextSpan(text:"Size\n"),
-              TextSpan(text: "${product.size} cm",style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold))
-            ]
-          ),),
-        )
-      ],
-    );
-  }
-}
-
-class ColorDot extends StatelessWidget {
-  final Color color;
-  final bool isSelected;
-  const ColorDot({Key? key, required this.color, this.isSelected = false})
-    : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(top: kDefultPaddin / 4, right: kDefultPaddin / 2),
-      padding: EdgeInsets.all(2.5),
-      height: 24,
-      width: 24,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        border: Border.all(color: isSelected?color:Colors.transparent),
-      ),
-      child: DecoratedBox(
-        decoration: BoxDecoration(color: color, shape: BoxShape.circle),
-      ),
-    );
-  }
-}

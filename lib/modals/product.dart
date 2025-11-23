@@ -75,4 +75,5 @@ List<Product> products = [
 
 const String dummyText =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
-    "Phasellus nec iaculis mauris.";
+    "Phasellus nec iaculis mauris.Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
+    "Phasellus nec iaculis mauris.Lorem ipsum dolor sit";
