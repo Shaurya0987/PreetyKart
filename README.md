@@ -7,7 +7,7 @@
 
 ---
 
-## 🚀 Overvie
+## 🚀 Overvieww
 
 This project is a **Flutter-based E-Commerce UI application** inspired by platforms like **Amazon** and **Flipkart**.
 
